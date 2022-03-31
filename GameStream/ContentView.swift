@@ -82,7 +82,7 @@ struct InicioSesionView:View {
                 ZStack(alignment:.leading){
                     
                     if correo.isEmpty{
-                        Text("escribe tu correo").font(.caption)
+                        Text("ejemplo@gmail.com").font(.caption)
                             .foregroundColor(.gray)
                     }
                     TextField("", text: $correo).foregroundColor(.white)
@@ -103,12 +103,20 @@ struct InicioSesionView:View {
                 
                 Divider().frame(height: 1).background(Color("DarkCian")).padding(.bottom)
                 
-                Text("¿Olvidaste tu contraseña?").font(.footnote).frame(width: 300, alignment: .trailing)
-                    .foregroundColor(Color("DarkCian")).padding(.bottom)
+                Text("¿Olvidaste tu contraseña?")
+                    .font(.footnote).frame(width: 300, alignment: .trailing)
+                    .foregroundColor(Color("DarkCian"))
+                    .padding(.bottom)
                 
                 
                 Button(action: iniciarSesion, label: {
-                    Text("INICIAR SESIÓN").font
+                    Text("INICIAR SESIÓN")
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .frame( maxWidth: .infinity, alignment: .center)
+                        .padding(EdgeInsets(top: 11, leading: 18, bottom: 11, trailing: 18))
+                        .overlay(RoundedRectangle(cornerRadius: 5.0).stroke(Color("DarkCian"),
+                                                                            lineWidth: 1.5).shadow(color: .white, radius: 5))
                 })
                 
                 
