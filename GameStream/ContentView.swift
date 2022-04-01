@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Alamofire
 
 struct ContentView: View {
     var body: some View {
@@ -115,11 +116,44 @@ struct InicioSesionView:View {
                         .foregroundColor(.white)
                         .frame( maxWidth: .infinity, alignment: .center)
                         .padding(EdgeInsets(top: 11, leading: 18, bottom: 11, trailing: 18))
-                        .overlay(RoundedRectangle(cornerRadius: 5.0).stroke(Color("DarkCian"),
-                                                                            lineWidth: 1.5).shadow(color: .white, radius: 5))
+                        .overlay(RoundedRectangle(cornerRadius: 5.0)
+                            .stroke(Color("DarkCian"),lineWidth: 1.5)
+                            .shadow(color: .white, radius: 5))
                 })
+                .padding(.vertical, 40)
                 
+                Text("Inicia sesion con redes sociales")
+                    .foregroundColor(.white)
+                    .padding(.top, 20)
+                    .frame(maxWidth: .infinity, alignment: .center)
                 
+                HStack {
+                    
+                    Button(action: iniciarSesion, label: {
+                       // Text("INICIAR SESIÓN")
+                        Text("Facebook").foregroundColor(.white)
+                            .fontWeight(.bold)
+                        
+                            .background(Color("blue-gray"))
+                            .frame( maxWidth: .infinity, alignment: .center)
+                            .padding(EdgeInsets(top: 11, leading: 18, bottom: 11, trailing: 18))
+                            .overlay(RoundedRectangle(cornerRadius: 5.0)
+                                .stroke(Color("blue-gray"),lineWidth: 1.5)
+                                /*.shadow(color: .white, radius: 5)*/)
+                    })
+                    
+                    Button(action: iniciarSesion, label: {
+                       // Text("INICIAR SESIÓN")
+                        Text("Twitter").foregroundColor(.white)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .frame( maxWidth: .infinity, alignment: .center)
+                            .padding(EdgeInsets(top: 11, leading: 18, bottom: 11, trailing: 18))
+                            .overlay(RoundedRectangle(cornerRadius: 5.0)
+                                .stroke(Color("blue-gray"),lineWidth: 1.5)
+                                /*.shadow(color: .white, radius: 5)*/)
+                    })
+                }
                 
                 
             }.padding(.horizontal, 77.0)
