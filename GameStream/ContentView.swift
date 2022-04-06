@@ -169,7 +169,7 @@ struct InicioSesionView:View {
             }.padding(.horizontal, 77.0)
             
             NavigationLink(
-              destination: Home(),
+              destination: HomeView(),
               isActive: $isPantallaHomeActive,
               label: {
                 EmptyView()

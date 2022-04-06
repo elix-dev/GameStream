@@ -6,14 +6,15 @@
 //
 
 import SwiftUI
-import UIKit
+import AVKit
 
-struct Home: View {
+struct HomeView: View {
     
     @State var tabSeleccionado:Int = 2
     
     var body: some View {
-        
+         
+                      
         TabView (selection:$tabSeleccionado){
 
             Text("Home")
@@ -40,23 +41,40 @@ struct Home: View {
                         Text("Favoritos")
                     }.tag(3)
             
-        }
+        }//color iconos
         .accentColor(.white)
     }
     
     //UIKit
-    init(){
+   /* init(){
         UITabBar.appearance().barTintColor =
         UIColor(Color("TabBar-Color"))
         UITabBar.appearance().isTranslucent = true
         
         print("Iniciando las vistas de home")
-    }
+    }*/
+    
+    
+    
+    
+    
+    
+    
+    
+    init(){
+            let appearance = UITabBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = .gray
+            UITabBar.appearance().standardAppearance = appearance
+            if#available(iOS 15.0, *) {
+                UITabBar.appearance().scrollEdgeAppearance = appearance
+                
+            }
 }
 
 
 struct PantallaHome: View {
-    
+
     @State var textoBusqueda = ""
     
     var body: some View {
@@ -69,28 +87,45 @@ struct PantallaHome: View {
                     Image("logo").padding(.horizontal, 11.0)
                     
                     HStack {
-                        Button(action: {/*Metodo de busqueda*/}, label: {
+                        Button(action: busqueda, label: {
                             Image(systemName:"magnifyingglass")
                                 .foregroundColor(textoBusqueda.isEmpty ?
                                 Color(.yellow) : Color("DarkCian")
                         )
                     })
-                    }
+                        //logica barra de busqueda
+                        ZStack(alignment:.leading) {
+                            
+                            if textoBusqueda.isEmpty {
+                                Text("Buscar un video")
+                                    .foregroundColor(Color(red: 174/255, green: 177/255, blue: 185/255, opacity: 1.0))
+                                TextField("", text: $textoBusqueda)
+                                    .foregroundColor(.white)
+                            }
+                        }
+                    }.padding([.top, .leading, .bottom], 11.0)
+                        .background(Color("blue-gray"))
+                        .clipShape(Capsule())
                    
-            }.padding(.horizontal,18)
+                }.padding(.horizontal,18.0)
             
         }.navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
+          
     }
+        
 }
-
-
-
-
+    func busqueda() {
+        print("El usuario esta buscando \(textoBusqueda)")
+    }
+   
+}
+   
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
-        Home()
+        HomeView()
             .preferredColorScheme(.dark)
     }
 }
 }
+
