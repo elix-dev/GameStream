@@ -19,8 +19,9 @@ struct ContentView: View {
                 Color(red: 19/255, green: 30/255, blue: 53/255, opacity: 1.0)
                     .ignoresSafeArea()
                 VStack {
-                    Image("logo2")
-                    Image("logo").padding(.bottom, 42)//.resizable().aspectRatio(contentMode: .fit).frame(width: 250)
+                    
+                    Image("AppLogo").resizable().aspectRatio(contentMode: .fit).frame(width: 250)
+                        .padding()
                     
                     InicioYRegistroView()
                     

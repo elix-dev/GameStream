@@ -79,9 +79,9 @@ struct HomeView: View {
                 
                 VStack {
                     VStack {
-                        Image("logo2")
-                        Image("logo").padding(.horizontal, 11.0)
-                       
+                        Image("AppLogo").resizable().aspectRatio(contentMode: .fit).frame(width: 250)
+                            .padding()
+                        
                         HStack {//imagen lupa
                             Button(action: busqueda, label: {
                                 Image(systemName:"magnifyingglass")
@@ -156,7 +156,7 @@ struct HomeView: View {
                         
                         VStack (spacing: 0){
                             
-                            Image("13-swiftuiapps-2105-rectangle7").resizable().scaledToFill()
+                            Image("The Witcher 3").resizable().scaledToFill()
                             Text("theWicher")
                                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                                 .background(Color("blue-gray"))
@@ -169,7 +169,73 @@ struct HomeView: View {
                         .frame(width: 42, height: 42)
                     
                     
+                } .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
+                    .padding(.vertical)
+                
+                
+                Text("CATEGORÍAS SUGERIDAS PARA TI")
+                    .font(.title3)
+                    .foregroundColor(.white)
+                    .bold()
+                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                     
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    
+                    HStack{
+                        
+                        Button(action: {}, label: {
+                            
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 8)
+                                    .fill(Color("blue-gray"))
+                                    .frame(width: 160, height: 90)
+                                
+                                Image("Vector-shot")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 42, height: 42)
+                            }
+                            
+                            
+                        })
+                        
+                        Button(action: {}, label: {
+                            
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 8)
+                                    .fill(Color("blue-gray"))
+                                    .frame(width: 160, height: 90)
+                                
+                                Image("rpg-icon")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 42, height: 42)
+                            }
+                            
+                            
+                        })
+                        
+                        Button(action: {}, label: {
+                            
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 8)
+                                    .fill(Color("blue-gray"))
+                                    .frame(width: 160, height: 90)
+                                
+                                Image("open-world-icon")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 42, height: 42)
+                            }
+                            
+                            
+                        })
+                        
+                    }
+                    
                 }
+                
             }
             
             
