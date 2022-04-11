@@ -23,7 +23,11 @@ struct HomeView: View {
                     Text("Perfil")
                 }.tag(0)
             
-            Text("Pantalla juegos")
+            
+            
+            
+            
+            GamesView()
                 .tabItem {
                     Image(systemName: "gamecontroller")
                     Text("Juegos")
@@ -107,11 +111,11 @@ struct HomeView: View {
                         
                         
                         ScrollView(showsIndicators: false){
-                                       SubModuloHome()
-                                           
-                                       }//.clipped()
+                            SubModuloHome()
+                            
+                        }//.clipped()
                         
-                                       
+                        
                         
                     }.padding(.horizontal,18.0)
                     
@@ -128,7 +132,7 @@ struct HomeView: View {
         
     }
     
-        
+    
     
     struct SubModuloHome:View {
         
@@ -149,7 +153,7 @@ struct HomeView: View {
                 ZStack {
                     
                     Button(action: {
-                        url = urlVideos[1]
+                        url = urlVideos[0]
                         print("URL: \(url)")
                         isPlayerActive = true
                     }, label: {
@@ -178,13 +182,13 @@ struct HomeView: View {
                     .foregroundColor(.white)
                     .bold()
                     .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                     
+                
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     
                     HStack{
                         
-                        Button(action: {}, label: {
+                        Button(action: {print("Pulse categoria Vector-shot")}, label: {
                             
                             ZStack {
                                 RoundedRectangle(cornerRadius: 8)
@@ -200,7 +204,7 @@ struct HomeView: View {
                             
                         })
                         
-                        Button(action: {}, label: {
+                        Button(action: {print("Pulse categoria rpg-icon")}, label: {
                             
                             ZStack {
                                 RoundedRectangle(cornerRadius: 8)
@@ -216,7 +220,7 @@ struct HomeView: View {
                             
                         })
                         
-                        Button(action: {}, label: {
+                        Button(action: {print("Pulse categoria open-world-icon")}, label: {
                             
                             ZStack {
                                 RoundedRectangle(cornerRadius: 8)
@@ -236,28 +240,143 @@ struct HomeView: View {
                     
                 }
                 
+                .padding(.vertical)
+                Text("RECOMENDADOS PARA TI")
+                    .font(.title3)
+                    .foregroundColor(.white)
+                    .bold()
+                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    
+                    HStack{
+                        
+                        Button(action: { url = urlVideos[1]
+                            print("URL: \(url)")
+                            isPlayerActive = true}, label: {
+                                Image("Abzu")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 240, height: 135)
+                                   
+                            }
+                        )
+                   
+                        Button(action: { url = urlVideos[2]
+                            print("URL: \(url)")
+                            isPlayerActive = true}, label: {
+                                Image("Crash Bandicoot")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 240, height: 135)
+                                   
+                            }
+                        )
+                    
+                    
+                        Button(action: { url = urlVideos[3]
+                            print("URL: \(url)")
+                            isPlayerActive = true}, label: {
+                                Image("DEATH STRANDING")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 240, height: 135)
+                                   
+                            }
+                        )
+                    
+                    
+                    
+                    
+                    }
+                }
+                
+                
+                
+                .padding(.vertical)
+                Text("VIDEOS QUE PODRÍAN GUSTARTE")
+                    .font(.title3)
+                    .foregroundColor(.white)
+                    .bold()
+                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                
+
+                ScrollView(.horizontal, showsIndicators: false) {
+                    
+                    HStack{
+                        
+                        Button(action: { url = urlVideos[4]
+                            print("URL: \(url)")
+                            isPlayerActive = true}, label: {
+                                Image("Grand Theft Auto V")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 240, height: 135)
+                                   
+                            }
+                        )
+                   
+                        Button(action: { url = urlVideos[5]
+                            print("URL: \(url)")
+                            isPlayerActive = true}, label: {
+                                Image("13-swiftuiapps-2105-dest")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 240, height: 135)
+                                   
+                            }
+                        )
+                    
+                    
+                        Button(action: { url = urlVideos[6]
+                            print("URL: \(url)")
+                            isPlayerActive = true}, label: {
+                                Image("The Witcher 3")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 240, height: 135)
+                                   
+                            }
+                        )
+                    
+                    
+                    
+                    
+                    }
+                }
+                
+                
+                
+                
+                
+                
+                
+                
+                
             }
+            
+            
             
             
             NavigationLink(
                 destination: VideoPlayer(player: AVPlayer(url: URL(string: url)!))
-                .frame(width: 400, height: 300),
+                    .frame(width: 400, height: 300),
                 isActive: $isPlayerActive,
                 label: {
                     EmptyView()
                 }
-        )
-    }
-    
-    
-    struct Home_Previews: PreviewProvider {
-        static var previews: some View {
-            HomeView()
-                .preferredColorScheme(.dark)
+            )
+        }
+        
+        
+        struct Home_Previews: PreviewProvider {
+            static var previews: some View {
+                HomeView()
+                    .preferredColorScheme(.dark)
+            }
         }
     }
-}
-
-
+    
+    
 }
 
