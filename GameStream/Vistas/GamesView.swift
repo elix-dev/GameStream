@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct GamesView: View {
+    
+    @ObservedObject var todosLosVideojuegos = ViewModel()
+    
     var body: some View {
         Text("Hola desde pantalla GamesView ")
             .navigationBarHidden(true)
@@ -15,8 +18,8 @@ struct GamesView: View {
             .onAppear(
             
                 perform: {
-                    print("primer elemento del json")
-                    print("Titulo del primer videojuego del json")
+                    print("primer elemento del json: \(todosLosVideojuegos.gamesInfo[0])")
+                    print("Titulo del primer videojuego del json \(todosLosVideojuegos.gamesInfo[2].contentRaiting)")
                     
                 }
                 

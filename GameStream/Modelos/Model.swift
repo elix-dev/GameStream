@@ -235,12 +235,12 @@ struct Games:Codable {
 
 struct Game:Codable {
     
-    var title: String
-    var studio: String
-    var contentRaiting: String
-    var publicationYear: String
-    var description: String
-    var platforms: String
+    var title:String
+    var studio:String
+    var contentRaiting:String
+    var publicationYear:String
+    var description:String
+    var platforms:[String]
     var tags: [String]
     var videosUrls: videoUrl
     var galleryImages: [String]
@@ -250,8 +250,26 @@ struct Game:Codable {
 struct videoUrl: Codable {
     
     var mobile: String
-    var table: String
+    var tablet: String
     
     
     
 }
+
+
+/*enum CodingKeys: String, CodingKey {
+       case title, studio, contentRaiting, publicationYear
+       case welcomeDescription = "description"
+       case platforms, tags, videosUrls, galleryImages
+   }
+
+
+// MARK: - VideosUrls
+struct VideosUrls: Codable {
+   let mobile, tablet: String
+}
+
+typealias Welcome = [WelcomeElement]*/
+
+
+

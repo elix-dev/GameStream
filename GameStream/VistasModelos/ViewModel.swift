@@ -2,12 +2,19 @@
 //  ViewModel.swift
 //  GameStream
 //
-//  Created by Elias Jose Rodriguez Indaburo on 11/04/22.
+//  Created by Elias Jose Rodriguez Indaburo on 12/04/22.
 //
+
 
 import Foundation
 
 
+
+import Foundation
+
+
+
+// PETICION AL SERVIDOR
 
 class ViewModel: ObservableObject {
     
@@ -18,7 +25,30 @@ class ViewModel: ObservableObject {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         
-        URLSession.shared.dataTask(with: <#T##URLRequest#>, completionHandler: <#T##(Data?, URLResponse?, Error?) -> Void#>)
+        URLSession.shared.dataTask(with: request) {data, response, error in
+            
+            do{
+                
+                if let  jsonData = data {
+                    
+                    print("Tamaño del Json \(jsonData)")
+                    
+                    let decodeData = try
+                    JSONDecoder() .decode([Game].self, from: jsonData)
+                    
+                    DispatchQueue.main.async {
+                        self.gamesInfo.append(contentsOf: decodeData)
+                    }
+                    
+                }
+                
+            }catch{
+                
+                print("Error: \(error)")
+                
+            }
+        }.resume()
     }
     
+
 }
