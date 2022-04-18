@@ -36,6 +36,8 @@ class ViewModel: ObservableObject {
                     let decodeData = try
                     JSONDecoder() .decode([Game].self, from: jsonData)
                     
+                    
+                    //asincrono
                     DispatchQueue.main.async {
                         self.gamesInfo.append(contentsOf: decodeData)
                     }
